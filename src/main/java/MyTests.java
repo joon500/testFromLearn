@@ -12,7 +12,6 @@ import java.util.concurrent.TimeUnit;
 public class MyTests {
 
     private WebDriver driver;
-    private String url = "https://www.avito.ru/";
 
     @BeforeSuite
     public void setUp() {
@@ -25,6 +24,7 @@ public class MyTests {
     }
     @BeforeClass
     public void appSetup() {
+        String url = "https://www.avito.ru/";
         driver.get(url);
         System.out.println("сайт открыт");
     }
@@ -36,6 +36,8 @@ public class MyTests {
 
 
         String par = element1.getAttribute("href");
+        String par2 = element1.getCssValue("display");
+        System.out.println(par2);
         System.out.println(par);
 
 
@@ -57,7 +59,7 @@ public class MyTests {
     }
 
     @AfterSuite
-    public void cleanUp() throws InterruptedException {
+    public void cleanUp() {
       //  driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(5));//поосто ожидание
         driver.quit();
         System.out.println("Все активновти закрыты");
