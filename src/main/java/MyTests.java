@@ -1,4 +1,5 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -7,7 +8,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
 public class MyTests {
 
@@ -19,19 +19,36 @@ public class MyTests {
                 "webdriver.chrome.driver",
                 "C:\\Users\\jon\\Desktop\\java\\chromedriver2.exe");
         driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));//все вызовы элементов driver.findElement()
+                                                                            // будут продолжаться то тех пор,
+                                                                            // пока элемент не будет найден или будет достигунта граница времени ожидания.
+
         System.out.println("Установка законченна");
     }
     @BeforeClass
     public void appSetup() {
+
         String url = "https://www.avito.ru/";
+      WebDriver.Timeouts ff =   driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));//Но стоит принимать во внимание, что если DOM не загрузился к тому моменту, вы получите TimeoutException.
+
         driver.get(url);
         System.out.println("сайт открыт");
     }
 
-    @Test() // тест для уроков по автоматизаци
-    public void myTest(){
+    @Test()
+    public void myTest3(){
 
+        WebElement element3 = driver.findElement(By.xpath("//input[@data-marker=\"search-form/suggest\"]"));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+       element3.clear();
+        element3.sendKeys("samsung", Keys.ENTER);
+
+        System.out.println("samsung");
+    }
+
+/*    @Test(priority = 1,groups = "1") // тест для уроков по автоматизаци
+    public void myTest(){
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         WebElement element1 = driver.findElement(By.xpath("//div[@class='category-with-counters-item-HDr9u']/a[contains(@href,'transport')]"));
 
 
@@ -44,12 +61,9 @@ public class MyTests {
         WebElement hooo =  new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(ExpectedConditions.presenceOfElementLocated(By.className("main-locationWrapper-R8itV")));// ожиданеи элемента если нету то пауза
 
+    }*/
 
-
-
-
-
-    }
+/*
     @Test()
     public void myTest2(){
         driver.get("https://www.avito.ru/rossiya/transport");
@@ -57,12 +71,13 @@ public class MyTests {
         String par2 = element2.getText();//19 284 005
         System.out.println(par2);
     }
+*/
 
     @AfterSuite
     public void cleanUp() {
       //  driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(5));//поосто ожидание
         driver.quit();
-        System.out.println("Все активновти закрыты");
+        System.out.println("Все активноcти закрыты");
     }
 
 
