@@ -3,6 +3,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
@@ -36,6 +37,27 @@ public class MyTests {
     }
 
     @Test()
+    public void myTest5(){
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+
+
+
+    }
+/*    @Test()
+    public void myTest4() throws InterruptedException {
+        Thread.sleep(2000);
+        WebElement element1 = driver.findElement(By.xpath("//div[@class='index-add-button-wrapper-s0SLe']/a[@href='#login?next=%2Fadditem&authsrc=ca']"));
+        WebElement element2 = driver.findElement(By.xpath("//input[@data-marker='search-form/suggest']"));
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element1).pause(1000).clickAndHold().pause(1000).moveToElement(element2).release().build().perform();
+       // actions.dragAndDropBy(element1,700,270);
+
+    }*/
+
+
+
+
+/*    @Test()
     public void myTest3(){
 
         WebElement element3 = driver.findElement(By.xpath("//input[@data-marker=\"search-form/suggest\"]"));
@@ -44,7 +66,8 @@ public class MyTests {
         element3.sendKeys("samsung", Keys.ENTER);
 
         System.out.println("samsung");
-    }
+
+    }*/
 
 /*    @Test(priority = 1,groups = "1") // тест для уроков по автоматизаци
     public void myTest(){
