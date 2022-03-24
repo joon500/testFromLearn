@@ -35,6 +35,7 @@ public class MyTests {
 
         driver.get(url);
 
+        
         System.out.println("сайт открыт");
     }
 /*
