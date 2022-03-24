@@ -1,7 +1,4 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -10,6 +7,8 @@ import org.testng.annotations.*;
 
 import java.time.Duration;
 import java.util.List;
+
+import static org.openqa.selenium.support.ui.ExpectedConditions.alertIsPresent;
 
 public class MyTests {
 
@@ -40,7 +39,18 @@ public class MyTests {
 
 
 
-    @Test()
+/*    @Test()
+    public void toAllertJS(){
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+        WebElement element = driver.findElement(By.xpath("//input[]"));
+        element.click();//клик по ссылке которая должна отобразить алерт
+        Alert alert = wait.until(alertIsPresent());//ожиданеи появление алерта
+        alert.accept();
+      //  alert.dismiss();
+
+    }*/
+
+/*    @Test()
     public void myTest5(){
       List<WebElement> element = (List<WebElement>) driver.findElement(By.xpath("//input[]"));
 
@@ -50,7 +60,7 @@ public class MyTests {
 
 
 
-    }
+    }*/
 /*    @Test()
     public void myTest4() throws InterruptedException {
         Thread.sleep(2000);
