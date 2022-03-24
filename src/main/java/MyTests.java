@@ -7,6 +7,7 @@ import org.testng.annotations.*;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.Set;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.alertIsPresent;
 
@@ -27,16 +28,40 @@ public class MyTests {
         System.out.println("Установка законченна");
     }
     @BeforeClass
-    public void appSetup() {
+    public void appSetup()  {
 
         String url = "https://www.avito.ru/";
       WebDriver.Timeouts ff =   driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));//Но стоит принимать во внимание, что если DOM не загрузился к тому моменту, вы получите TimeoutException.
 
         driver.get(url);
+
         System.out.println("сайт открыт");
     }
+/*
+    @Test()
+    public void openAndSwitchToWindow() throws InterruptedException {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
 
+        String window1 = driver.getWindowHandle();
+        System.out.println(window1);//дескриптор текущего окна
+        js.executeScript("window.open()"); //открыть нове окно
 
+        Set<String> currentWindows = driver.getWindowHandles(); //набор окон
+        String window2 = null;
+        for (String windows: currentWindows
+             ) {if (!windows.equals(window1))
+        {window2 = windows; break;}
+        }
+        driver.switchTo().window(window2); //перключение на новое окно
+        System.out.println(window2);
+        Thread.sleep(2220);
+        driver.switchTo().window(window1);
+        Thread.sleep(2220);
+        driver.close(); //закрыть текущею вкладку
+        Thread.sleep(2220);
+        driver.switchTo().window(window2);
+
+    }*/
 
 
 /*    @Test()
