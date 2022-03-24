@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 
 import java.time.Duration;
+import java.util.List;
 
 public class MyTests {
 
@@ -41,9 +42,11 @@ public class MyTests {
 
     @Test()
     public void myTest5(){
+      List<WebElement> element = (List<WebElement>) driver.findElement(By.xpath("//input[]"));
+
         WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
-
-
+//ждать пока не исчезнет 5й элемент
+        wait.until(ExpectedConditions.stalenessOf(element.get(5)));
 
 
 
