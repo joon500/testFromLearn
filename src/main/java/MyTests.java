@@ -38,6 +38,7 @@ public class MyTests {
         System.out.println("сайт открыт");
     }
 /*
+
     @Test()
     public void openAndSwitchToWindow() throws InterruptedException {
         JavascriptExecutor js = (JavascriptExecutor) driver;
