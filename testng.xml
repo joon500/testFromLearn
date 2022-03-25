@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+  <!--  <test verbose="2" preserve-order="true" name="C:/Users/jon/IdeaProjects/TestIzUrokaPoavtotestam">-->
+<test name="Test">
+       <!-- <packages> <package name="newPac"></package> </packages>-->
+    <groups>
+        <run>
+          <include name="two"/>
+        </run>
+    </groups>
+     <classes>
+         <class name="MyTests"></class>
+
+     </classes>
+
+
+    </test>
+</suite>
