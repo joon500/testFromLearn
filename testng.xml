@@ -4,6 +4,7 @@
   <!--  <test verbose="2" preserve-order="true" name="C:/Users/jon/IdeaProjects/TestIzUrokaPoavtotestam">-->
 <test name="Test">
        <!-- <packages> <package name="newPac"></package> </packages>-->
+  <parameter name="ggg" value="1111111"></parameter>
     <groups>
         <run>
           <include name="two"/>

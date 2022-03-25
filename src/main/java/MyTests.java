@@ -28,10 +28,10 @@ public class MyTests {
 
         System.out.println("Установка законченна");
     }
-
+@Parameters({"ggg"})
     @BeforeClass(groups = "two")
-    public void appSetup() {
-
+    public void appSetup(String ggg) {
+    System.out.println(ggg);
         String url = "https://www.avito.ru/";
         WebDriver.Timeouts ff = driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));//Но стоит принимать во внимание, что если DOM не загрузился к тому моменту, вы получите TimeoutException.
         driver.get(url);
@@ -45,17 +45,25 @@ public class MyTests {
         lp.login("admin", "123");
 
     }*/
-    @Test(groups = "two")
-    public void myTest3(){
+    @DataProvider(name = "db")
+    public static Object[][] dbData(){
+        return new Object[][]{{"sql",new Integer(10)}
+                ,{"sql2", 20}};
+    }
+
+
+    @Test(groups = "two",dataProvider = "db")
+    public void myTest3(String a,int b){
+        System.out.println( " "+a+" "+b);
 
         //WebElement element3 = driver.findElement(By.xpath("//input[@data-marker=\"search-form/suggest\"]"));
-        String title = driver.getTitle();
-        System.out.println(title);
-        Assert.assertEquals(title,"Авито: недвижимость, транспорт, работа, услуги, вещи");
+        //String title = driver.getTitle();
+       // System.out.println(title);
+      //  Assert.assertEquals(title,"Авито: недвижимость, транспорт, работа, услуги, вещи");
 
     }
 
-    @Test(groups = "one")
+/*    @Test(groups = "one")
     public void myTest2(){
 
         //WebElement element3 = driver.findElement(By.xpath("//input[@data-marker=\"search-form/suggest\"]"));
@@ -63,7 +71,7 @@ public class MyTests {
         System.out.println(title);
         Assert.assertEquals(title,"Ави0то: недвижимость, транспорт, работа, услуги, вещи");
 
-    }
+    }*/
 
 
 /*
