@@ -3,6 +3,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.time.Duration;
@@ -35,9 +36,23 @@ public class MyTests {
 
         driver.get(url);
 
-        
+
         System.out.println("сайт открыт");
     }
+
+    @Test()
+    public void myTest3(){
+
+        //WebElement element3 = driver.findElement(By.xpath("//input[@data-marker=\"search-form/suggest\"]"));
+String title = driver.getTitle();
+        System.out.println(title);
+        Assert.assertEquals(title,"Авито: недвижимость, транспорт, работа, услуги, вещи");
+
+    }
+
+
+
+
 /*
 
     @Test()
