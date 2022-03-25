@@ -16,41 +16,54 @@ public class MyTests {
 
     private WebDriver driver;
 
-    @BeforeSuite
+    @BeforeSuite(groups = "two")
     public void setUp() {
         System.setProperty(
                 "webdriver.chrome.driver",
                 "C:\\Users\\jon\\Desktop\\java\\chromedriver2.exe");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));//все вызовы элементов driver.findElement()
-                                                                            // будут продолжаться то тех пор,
-                                                                            // пока элемент не будет найден или будет достигунта граница времени ожидания.
+        // будут продолжаться то тех пор,
+        // пока элемент не будет найден или будет достигунта граница времени ожидания.
 
         System.out.println("Установка законченна");
     }
-    @BeforeClass
-    public void appSetup()  {
+
+    @BeforeClass(groups = "two")
+    public void appSetup() {
 
         String url = "https://www.avito.ru/";
-      WebDriver.Timeouts ff =   driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));//Но стоит принимать во внимание, что если DOM не загрузился к тому моменту, вы получите TimeoutException.
-
+        WebDriver.Timeouts ff = driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));//Но стоит принимать во внимание, что если DOM не загрузился к тому моменту, вы получите TimeoutException.
         driver.get(url);
-
 
         System.out.println("сайт открыт");
     }
 
-    @Test()
+/*    @Test()
+    public void myTest3() {
+        LoginPage lp = new LoginPage();
+        lp.login("admin", "123");
+
+    }*/
+    @Test(groups = "two")
     public void myTest3(){
 
         //WebElement element3 = driver.findElement(By.xpath("//input[@data-marker=\"search-form/suggest\"]"));
-String title = driver.getTitle();
+        String title = driver.getTitle();
         System.out.println(title);
         Assert.assertEquals(title,"Авито: недвижимость, транспорт, работа, услуги, вещи");
 
     }
 
+    @Test(groups = "one")
+    public void myTest2(){
 
+        //WebElement element3 = driver.findElement(By.xpath("//input[@data-marker=\"search-form/suggest\"]"));
+        String title = driver.getTitle();
+        System.out.println(title);
+        Assert.assertEquals(title,"Ави0то: недвижимость, транспорт, работа, услуги, вещи");
+
+    }
 
 
 /*
@@ -158,12 +171,10 @@ String title = driver.getTitle();
 
     @AfterSuite
     public void cleanUp() {
-      //  driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(5));//поосто ожидание
+        //  driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(5));//поосто ожидание
         driver.quit();
         System.out.println("Все активноcти закрыты");
     }
-
-
 
 
 }
